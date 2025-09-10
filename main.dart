@@ -1,5 +1,15 @@
-SELECT 
-    email,
-    SUBSTR(email, 1, INSTR(email, '@') - 1) AS login
-FROM 
-    tabela_emails;
+import 'dart:io';
+import '../lib/email_utils.dart';
+
+void main() {
+  // Exemplo: ler emails fixos (você pode substituir por stdin se quiser)
+  final emails = [
+    'alice@example.com',
+    'bob@dom.com',
+    'charlie@test.org',
+  ];
+
+  for (var email in emails) {
+    print(extractLogin(email));
+  }
+}
