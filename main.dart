@@ -1,15 +1,13 @@
-import 'dart:io';
-import '../lib/email_utils.dart';
-
 void main() {
-  // Exemplo: ler emails fixos (você pode substituir por stdin se quiser)
-  final emails = [
-    'alice@example.com',
-    'bob@dom.com',
-    'charlie@test.org',
-  ];
-
-  for (var email in emails) {
-    print(extractLogin(email));
+  print('Digite os CPFs (11 dígitos), um por linha. Ctrl+D para finalizar:');
+  String? line;
+  while ((line = stdin.readLineSync()) != null) {
+    final cpf = line.trim();
+    if (cpf.isEmpty) continue;
+    try {
+      print(formatCpf(cpf));
+    } catch (e) {
+      print('Erro no CPF "$cpf": $e');
+    }
   }
 }
